@@ -1,4 +1,4 @@
-# Pasario Development Container
+# Darumatic container for using kubespray
 FROM 687293323933.dkr.ecr.us-east-1.amazonaws.com/centosjava
 MAINTAINER Felix Schmitz <Felix@darumatic.com>
 
