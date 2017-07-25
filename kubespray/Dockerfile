@@ -1,6 +1,6 @@
 # Pasario Development Container
 FROM 687293323933.dkr.ecr.us-east-1.amazonaws.com/centosjava
-MAINTAINER Felix Schmitz <Felix.Schmitz@pasar.io>
+MAINTAINER Felix Schmitz <Felix@darumatic.com>
 
 RUN yum -y install git \
     && mkdir /opt/k8setup \
