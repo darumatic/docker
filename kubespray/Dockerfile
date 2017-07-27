@@ -1,5 +1,5 @@
 # Darumatic container for using kubespray
-FROM 687293323933.dkr.ecr.us-east-1.amazonaws.com/centosjava
+FROM centos:7
 MAINTAINER Felix Schmitz <Felix@darumatic.com>
 
 RUN yum -y install git \
