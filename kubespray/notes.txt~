@@ -1,0 +1,7 @@
+git clone git@github.com:darumatic/docker.git
+cd docker/kubespray
+docker build -t kubespray:0 .
+docker run -v ~/.ssh/:/root/.ssh/ -v ~/.kubespray.yml:/root/.kubespray.yml -v ~/.aws/:/root/.aws/ -it kubespray:0 bash
+kubespray aws --masters 1 --nodes 1
+kubespray deploy --aws --redhat -u centos
+
