@@ -15,3 +15,5 @@ RUN curl -LO https://github.com/kubernetes/kops/releases/download/1.7.0/kops-lin
     && yum -y install groff \
     && yum -y install bind-utils
 
+COPY kops_user.sh /root 
+WORKDIR /root
