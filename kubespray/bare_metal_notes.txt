@@ -4,9 +4,9 @@ docker build -t kubespray:0 .
 docker run -v ~/.ssh/:/root/.ssh/ -v ~/.kubespray.yml:/root/.kubespray.yml -it --name kubespray_ks kubespray:0 bash
 
 #change these ip's for your own
-export M1=45.76.117.174
-export N1=45.77.50.143 
-export N2=45.63.30.108
+export M1=45.77.50.244
+export N1=45.77.51.90 
+export N2=45.77.51.156
 
 #Use only for Ubuntu hosts. Install Python and disable firewall
 ssh root@$M1 "apt install -y python;ufw disable"
