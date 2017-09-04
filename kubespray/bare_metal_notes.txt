@@ -1,11 +1,11 @@
-#change these ip's for your own
-export N1=45.63.31.86 
-export N2=45.77.49.23
-
 git clone git@github.com:darumatic/docker.git
 cd docker/kubespray
 docker build -t kubespray:0 .
 docker run -v ~/.ssh/:/root/.ssh/ -v ~/.kubespray.yml:/root/.kubespray.yml -it kubespray:0 bash
+
+#change these ip's for your own
+export N1=45.63.31.86 
+export N2=45.77.49.23
 
 #Use only for Ubuntu hosts
 ssh root@$N2 "apt install -y python"
