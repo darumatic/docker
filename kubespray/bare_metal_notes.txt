@@ -23,5 +23,6 @@ kubespray prepare --nodes node1[ansible_ssh_host=$N1] node2[ansible_ssh_host=$N2
 #ubuntu 1604
 kubespray deploy -u root -P
 
-#cento7
-#kubespray deploy --redhat -u centos -P
+#centos7
+kubespray deploy --redhat -u root -P
+
