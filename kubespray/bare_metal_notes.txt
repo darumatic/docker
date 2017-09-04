@@ -1,7 +1,7 @@
 git clone git@github.com:darumatic/docker.git
 cd docker/kubespray
 docker build -t kubespray:0 .
-docker run -v ~/.ssh/:/root/.ssh/ -v ~/.kubespray.yml:/root/.kubespray.yml -it kubespray:0 bash
+docker run -v ~/.ssh/:/root/.ssh/ -v ~/.kubespray.yml:/root/.kubespray.yml -it kubespray:0 kubespray_ks bash
 
 #change these ip's for your own
 export N1=45.63.31.86 
