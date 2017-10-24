@@ -1,20 +1,28 @@
 git clone git@github.com:darumatic/docker.git
 cd docker/kubespray
 docker build -t kubespray:0 .
-docker run -v ~/.ssh/:/root/.ssh/ -v ~/.kubespray.yml:/root/.kubespray.yml -it kubespray:0 bash
+docker run -v ~/.ssh/:/root/.ssh/ -v ~/.kubespray.yml:/root/.kubespray.yml -it --name kubespray_ks kubespray:0 bash
 
+#change these ip's for your own
+export M1=45.77.50.244
+export N1=45.77.51.90 
+export N2=45.77.51.156
 
-export N1=45.63.31.86 
-export N2=45.77.49.23
+#Use only for Ubuntu 1604 hosts. Install Python and disable firewall
+ssh root@$M1 "apt install -y python;ufw disable"
+ssh root@$N1 "apt install -y python;ufw disable"
+ssh root@$N2 "apt install -y python;ufw disable"
 
-#for Ubuntu hosts
-ssh root@$N2 "apt install -y python"
-ssh root@$N2 "apt install -y python"
+#for Centos7
+ssh root@$M1 "systemctl disable firewalld;systemctl stop firewalld"
+ssh root@$N1 "systemctl disable firewalld;systemctl stop firewalld"
+ssh root@$N2 "systemctl disable firewalld;systemctl stop firewalld"
 
+kubespray prepare --nodes node1[ansible_ssh_host=$N1] node2[ansible_ssh_host=$N2] --etcds master1[ansible_ssh_host=$M1] --masters master1[ansible_ssh_host=$M1]
 
-kubespray prepare --nodes master1[ansible_ssh_host=$N1] node1[ansible_ssh_host=$N2] --etcds master[ansible_ssh_host=$N1] --masters master[ansible_ssh_host=$N1] 
-
-#cento7
-kubespray deploy --redhat -u centos -P
 #ubuntu 1604
 kubespray deploy -u root -P
+
+#centos7
+kubespray deploy --redhat -u root -P
+
